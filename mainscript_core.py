@@ -451,7 +451,7 @@ def blastnprobes(name,newlist,fullseq,db2,maxprobe,numbr,cdna,MEDIA_FASTA,BLAST_
                         count,seqs,g = noblast(newlist1,fullseq1,maxprobe1,numbr1,cdna1)
                         uniquesbad,uniques,fltrblastbad,fltrblastok,blst = [],[],[],[],None
                         #print("endblastnprobes")
-                        return [uniquesbad,uniques,fltrblastbad,fltrblastok,str(count-1),seqs,g,blst]
+                        return [uniquesbad,uniques,fltrblastbad,fltrblastok,str(int(count-1)),seqs,g,blst]
                 else:
                     print("WARNING: No BLAST hits were found.")
                     print("WARNING: No BLAST hits were found.")
@@ -466,7 +466,7 @@ def blastnprobes(name,newlist,fullseq,db2,maxprobe,numbr,cdna,MEDIA_FASTA,BLAST_
                     uniquesbad,uniques,fltrblastbad,fltrblastok,blst = [],[],[],[],None
                     count,seqs,g = noblast(newlist1,fullseq1,maxprobe1,numbr1,cdna1)
                     #print("endblastnprobes")
-                    return [uniquesbad,uniques,fltrblastbad,fltrblastok,str(count-1),seqs,g,blst]
+                    return [uniquesbad,uniques,fltrblastbad,fltrblastok,str(int(count)-1),seqs,g,blst]
             finally:
                 if fail != False:
                     print("It seems there was an error with BLAST. The program will try to make probes without running BLAST.")
