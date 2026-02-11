@@ -1,9 +1,6 @@
 # Hybridization Chain Reaction in situ probe generator for the command line version 2.0
 *Generate HCR-3.0-style Probe Pairs for fluorescent* in situ *mRNA visualization*
 
-## [Özpolat lab at WUStL](https://bduyguozpolat.org/research)
-[Cite us!](https://doi.org/10.1002/jez.b.23100)
-
 ### Intention of this program:
 
 We were excited to venture into the realm of quick, easy, mutliplexable *in situ* hybridizations presented by the Hybridization Chain Reaction methodology (Choi et al. Development 2018) . We wanted a budget-friendly way of exploring gene expression that allowed for complete control over probe design, while allowing us to also know the exact sequences of our probes to aid publication and reproducibility. As a result, we wrote this program to allow us ease of ordering probes that mesh with the published HCR system of reaction and amplification reagents.
@@ -16,20 +13,7 @@ This current iteration has added features that enable users to:
   + Have properly formatted forms to order probe sets as 
     + A single tube of oligos pooled together for pilot studies (~10 reactions)
     + Individual oligos for routinely used probe sets (~5000 reactions)
-  
-### What you'll find here:
-  + Python scripts compatible with Python versions 3.7 to 3.12
 
-### What you will need to use this software:
-  + [Python v3.7 - v3.12](https://www.python.org/downloads)
-  + Python libraries
-    + Biopython
-    + Numpy
-    + Openpyxl
-    + Pandas
-  ```
-  pip install Bio numpy openpyxl pandas
-  ```
   + [NCBI's BLAST+ local software suite](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
   + A reference transcriptome if intending to utilize BLAST
   + Your transcript(s) of interest in FASTA format
@@ -50,7 +34,8 @@ This current iteration has added features that enable users to:
     *Input*
     ```
     $ cd /location/of/the/downloaded/scripts
-    $ python ./HCR.py -amp B1 -in ./YourFavGene.fasta
+    $ uv sync
+    $ uv run ./HCR.py -amp B1 -in ./YourFavGene.fasta
     ```
     *Output*
     ```
@@ -66,7 +51,8 @@ This current iteration has added features that enable users to:
     *Input*
     ```
     $ cd /location/of/the/downloaded/scripts
-    $ python ./HCR.py -amp B1 -cg 20-70 -polyAT 5 -polyGC 3 -in YourFavGene.fasta -max 37 -min 10
+    $ uv sync
+    $ uv run ./HCR.py -amp B1 -cg 20-70 -polyAT 5 -polyGC 3 -in YourFavGene.fasta -max 37 -min 10
     ```
     *Output*
     ```
@@ -117,8 +103,8 @@ This current iteration has added features that enable users to:
     *Input*
     ```
     $ cd /location/of/the/downloaded/scripts
-
-    $ python ./HCR.py -amp b1,b2 -in ./test.fa -min 20 -max 36 -min 10 -polyAT 4 -polyGC 3 -GC 20-65
+    $ uv sync
+    $ uv run ./HCR.py -amp b1,b2 -in ./test.fa -min 20 -max 36 -min 10 -polyAT 4 -polyGC 3 -GC 20-65
     ```
   + ### Using BLASTn to flag potentially promiscuous probe pairs
     Though HCR with split initiators is less likely to generate background fluorescence, you may want to check for the potential of off-target binding during the probe design process. We have built in blastn functionality that flags probe pairs that have high coverage of multiple sequences within a fasta file. This function does not remove the sequences, it simply highlights them so that the user can investigate further and choose to remove if they want. Sequences are only flagged if both halves of the probe pair match a target sequence. Perfect alignment of a single half, will not result in flagging as it should not result in background fluorescence. If a probe pair matches a sequence perfectly across the full length of the pair, and the match belongs to a sequence with a different identifier to the input sequence, a flag "! -->" is applied to the probe pair number. It may be that this is a duplicate sequence, an isoform, a paralog, or something else. We leave this to you to intuit whether or not to keep this sequence in the probe submission.
@@ -128,7 +114,8 @@ This current iteration has added features that enable users to:
     *Input*
     ```
     $ cd /location/of/the/downloaded/scripts
-    $ python ./HCR.py -blast ./path/to/reference/transcriptome.fa -in ./YourFavGene.fasta -amp B1 
+    $ uv sync
+    $ uv run ./HCR.py -blast ./path/to/reference/transcriptome.fa -in ./YourFavGene.fasta -amp B1 
     ```
     *Output*
     ```
@@ -146,7 +133,8 @@ This current iteration has added features that enable users to:
   *Input*
   ```
   $ cd /location/of/the/downloaded/scripts
-  $ python ./ampswap.py -in ./B1_yourfavgene_36_Delay0opool.xlsx -old B1 -new B2,B3,B4
+  $ uv sync
+  $ uv run ./ampswap.py -in ./B1_yourfavgene_36_Delay0opool.xlsx -old B1 -new B2,B3,B4
   ```
   *Output*
   ```
