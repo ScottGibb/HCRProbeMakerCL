@@ -1,4 +1,4 @@
-# Hybridization Chain Reaction in situ probe generator for the command line version 2.0
+# Hybridization Chain Reaction in situ probe generator for the command line version 2.1
 *Generate HCR-3.0-style Probe Pairs for fluorescent* in situ *mRNA visualization*
 
 ### Intention of this program:
