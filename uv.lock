@@ -30,7 +30,7 @@ wheels = [
 
 [[package]]
 name = "insitu-probe-generator"
-version = "2.1.1"
+version = "2.2.0"
 source = { virtual = "." }
 dependencies = [
     { name = "biopython" },
